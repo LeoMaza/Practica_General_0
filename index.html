@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <h1>
+        Articulos para kiosco
+     </h1>
+    <div class="chocolate">
+        <img src="https://arcorencasa.com/wp-content/uploads/2020/07/20200722-1010770.png" alt="">
+        <label for="chocolate">Chocolate $400</label>
+        <input type="number" id="chocolate" min="0">
+        <input type="button" id="carrito" value="Seleccione" onclick="agregarCarrito()">
+    </div>
+
+    <div class="alfajor">
+        <img src="https://arcorencasa.com/wp-content/uploads/2020/05/1006596.jpg" alt="">
+        <label for="alfajor">Alfajor $200</label>
+        <input type="number" id="alfajor" min="0">
+        <input type="button" value="Seleccione" onclick="agregarCarrito()" >
+    </div>
+
+    <div class="papasFritas">
+        <img src="https://d1on8qs0xdu5jz.cloudfront.net/webapp/images/productos/b/0000008000/8548.jpg" alt="">
+        <label for="papasFritas">Papas Fritas $300</label>
+        <input type="number" id="papasFritas" min="0">
+        <input type="button" value="Seleccione" onclick="agregarCarrito()" >
+    </div>
+
+    <div id="resultado"></div>
+    
+    <div>
+        <button class= "button" onclick="finalizarCompra()">Comprar</button>
+    </div>
+
+    <div id="resultado2"></div>
+
+
+
+
+
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
