@@ -6,6 +6,7 @@ const PAGO_EFECTIVO = 1;
 const TARJETA_1_PAGO = 2;
 const TARJETA_3_PAGOS = 3;
 const TARJETA_6_PAGOS = 4;
+const RECARGO_3PAGOS = (TARJETA_3_PAGOS * 5) / 100;
 
 
 let elegirA = "num ppor def";
@@ -17,7 +18,7 @@ function sumaProductos() {
     let elegirC = Number(document.querySelector("#chocolate").value);
     let elegirA = Number(document.querySelector("#alfajor").value);
     let elegirP = Number(document.querySelector("#papasFritas").value);
-  
+
 
 }
 
@@ -30,10 +31,10 @@ function agregarCarrito() {
     let producto = document.querySelector("#resultado");
     let total = PRECIO_CHOCOLATE * elegirC;
     let total2 = PRECIO_ALFAJOR * elegirA;
-    let total3 = PRECIO_PAPAS_FRITAS * elegirP ;
-    let precioFinal = total + total2 + total3 ;
+    let total3 = PRECIO_PAPAS_FRITAS * elegirP;
+    let precioFinal = total + total2 + total3;
 
-   
+
 
 
 
@@ -92,11 +93,15 @@ function finalizarCompra() {
     let cantidadElegidaP = elegirP * PRECIO_PAPAS_FRITAS;
     let cantidadElegidaA = elegirA * PRECIO_ALFAJOR;
     let eleccionParaDesc = cantidadElegidaC + cantidadElegidaA + cantidadElegidaP;
-    let descuentoEf = ( eleccionParaDesc * 20) / 100;
+    let descuentoEf = (eleccionParaDesc * 20) / 100;
     let precioFinalEF = eleccionParaDesc - descuentoEf;
     let tarjetaUnPago = eleccionParaDesc;
-    let tarjetaTresCuotas = eleccionParaDesc / 3;
-    let tarjetaSeisCuotas = eleccionParaDesc / 6;
+    let recargoTresCuotas = (eleccionParaDesc * 5) / 100;
+    let recargoSeisCuotas = (eleccionParaDesc * 15) / 100;
+    let tresCuotasConRecargo = eleccionParaDesc + recargoTresCuotas;
+    let seisCuotasConRecargo = eleccionParaDesc + recargoSeisCuotas;
+    let tarjetaTresCuotas = (eleccionParaDesc + recargoTresCuotas) / 3;
+    let tarjetaSeisCuotas = (eleccionParaDesc + recargoSeisCuotas) / 6;
 
 
 
@@ -111,11 +116,11 @@ function finalizarCompra() {
             break;
         case TARJETA_3_PAGOS:
             producto.innerHTML = `
-            <h3>Con tarjeta de credito en 3 pagos, el precio final es de $${eleccionParaDesc} en 3 cuotas de $${tarjetaTresCuotas.toFixed(2)}  </h3>`
+            <h3>Con tarjeta de credito en 3 pagos tiene un recargo del 5%, el precio final es de $${tresCuotasConRecargo} en 3 cuotas de $${tarjetaTresCuotas.toFixed(2)}  </h3>`
             break;
         case TARJETA_6_PAGOS:
             producto.innerHTML = `
-            <h3>Con tarjeta de credito en 6 pagos, el precio final es de $${eleccionParaDesc} en 6 cuotas de $${tarjetaSeisCuotas.toFixed(2)} </h3>
+            <h3>Con tarjeta de credito en 6 pagos tiene un recargo del 15%, el precio final es de $${seisCuotasConRecargo} en 6 cuotas de $${tarjetaSeisCuotas.toFixed(2)} </h3>
             `
             break;
         default:
